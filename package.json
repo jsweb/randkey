@@ -1,0 +1,33 @@
+{
+  "name": "randkey",
+  "version": "1.0.0",
+  "description": "Simple JS module to generate random keys in various formats, including UUID",
+  "main": "randkey.umd.js",
+  "jsnext:main": "randkey.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexbruno/randkey.git"
+  },
+  "keywords": [
+    "random",
+    "key",
+    "uuid",
+    "js"
+  ],
+  "author": "Alex Bruno <webmaster@alexbruno.net.br>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexbruno/randkey/issues"
+  },
+  "homepage": "https://github.com/alexbruno/randkey#readme",
+  "scripts": {
+    "compile": "rollup -c",
+    "minify": "uglifyjs -cmo randkey.min.js -- randkey.umd.js",
+    "build": "npm run compile && npm run minify"
+  },
+  "devDependencies": {
+    "rollup": "latest",
+    "rollup-plugin-buble": "latest",
+    "uglify-js": "latest"
+  }
+}
