@@ -16,9 +16,9 @@ You can install it with Bower or NPM:
 
 `npm i -S randkey`
 
-If you are using JSPM you can install randkey from NPM:
+If you are using **JSPM** you can install randkey from NPM:
 
-jspm i randkey=npm:randkey
+`jspm i randkey=npm:randkey`
 
 ## Usage
 
