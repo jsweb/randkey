@@ -4,20 +4,20 @@ let rk = {
     return Math.round(n)
   },
 
-  randx() {
+  rand16() {
     return rk.rand().toString(16)
   },
 
-  randxx() {
+  rand32() {
     return rk.rand().toString(32)
   },
 
-  randxxx() {
+  rand36() {
     return rk.rand().toString(36)
   },
 
   id4bits() {
-    return rk.randxxx().substr(0, 4)
+    return rk.rand36().substr(0, 4)
   },
 
   id8bits() {
