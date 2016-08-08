@@ -17,7 +17,7 @@ let rk = {
   },
 
   id4bits() {
-    return rk.rand36().substr(0, 4)
+    return rk.rand16().substr(0, 4)
   },
 
   id8bits() {

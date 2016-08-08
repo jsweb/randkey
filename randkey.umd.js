@@ -10,20 +10,20 @@
       return Math.round(n)
     },
 
-    randx: function randx() {
+    rand16: function rand16() {
       return rk.rand().toString(16)
     },
 
-    randxx: function randxx() {
+    rand32: function rand32() {
       return rk.rand().toString(32)
     },
 
-    randxxx: function randxxx() {
+    rand36: function rand36() {
       return rk.rand().toString(36)
     },
 
     id4bits: function id4bits() {
-      return rk.randxxx().substr(0, 4)
+      return rk.rand16().substr(0, 4)
     },
 
     id8bits: function id8bits() {

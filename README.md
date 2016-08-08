@@ -87,7 +87,7 @@ randkey.rand36() // returns something like 'a36sxqtk'
 Returns a random string with 4 characters.
 
 ```javascript
-randkey.id4bits() // returns something like 'h9x1'
+randkey.id4bits() // returns something like 'h9c1'
 ```
 
 ### randkey.id8bits()
@@ -95,7 +95,7 @@ randkey.id4bits() // returns something like 'h9x1'
 Returns a random string with 8 characters.
 
 ```javascript
-randkey.id8bits() // returns something like 'gg9c6jmd'
+randkey.id8bits() // returns something like 'bf9c61ed'
 ```
 
 ### randkey.id16bits()
@@ -103,7 +103,7 @@ randkey.id8bits() // returns something like 'gg9c6jmd'
 Returns a random string with 16 characters.
 
 ```javascript
-randkey.id16bits() // returns something like 'gklt3ac8expa6jmd'
+randkey.id16bits() // returns something like '6c1f3ac8e0ba611d'
 ```
 
 ### randkey.id32bits()
@@ -111,7 +111,7 @@ randkey.id16bits() // returns something like 'gklt3ac8expa6jmd'
 Returns a random string with 32 characters.
 
 ```javascript
-randkey.id32bits() // returns something like 'g17e3ac8expa92sh6jmdh9x1gklt2ehz'
+randkey.id32bits() // returns something like 'f17e3ac8e0ba925a61ed19016c1f2eb0'
 ```
 
 ### randkey.uuid()
@@ -119,5 +119,5 @@ randkey.id32bits() // returns something like 'g17e3ac8expa92sh6jmdh9x1gklt2ehz'
 Returns a random UUID pattern string.
 
 ```javascript
-randkey.uuid() // returns something like '43adf6ec-bbae-4aae-bfec-1b6bd0147bb4'
+randkey.uuid() // returns something like 'cb3721d3-efbf-4cbc-ab97-d267a2ce198b'
 ```
