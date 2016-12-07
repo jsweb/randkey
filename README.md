@@ -45,7 +45,7 @@ require(['randkey'], randkey => {
 ### Global
 
 ```html
-<script src="path/to/randkey/randkey.min.js"></script>
+<script src="path/to/randkey/randkey.umd.js"></script>
 ```
 
 ## Methods

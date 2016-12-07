@@ -6,28 +6,45 @@
   "jsnext:main": "randkey.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alexbruno/randkey.git"
+    "url": "git+https://gitlab.com/alexbruno/randkey.git"
   },
+  "bugs": {
+    "url": "https://gitlab.com/alexbruno/randkey/issues"
+  },
+  "homepage": "https://gitlab.com/alexbruno/randkey#readme",
+  "author": "Alex Bruno <master@conext.online>",
   "keywords": [
     "random",
     "key",
     "uuid",
     "js"
   ],
-  "author": "Alex Bruno <webmaster@alexbruno.net.br>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/alexbruno/randkey/issues"
-  },
-  "homepage": "https://github.com/alexbruno/randkey#readme",
-  "scripts": {
-    "compile": "rollup -c",
-    "minify": "uglifyjs -cmo randkey.min.js -- randkey.umd.js",
-    "build": "npm run compile && npm run minify"
-  },
   "devDependencies": {
+    "autoprefixer-stylus": "latest",
+    "axis": "latest",
+    "gulp": "latest",
+    "gulp-cached": "latest",
+    "gulp-imagemin": "latest",
+    "gulp-live-server": "latest",
+    "gulp-load-plugins": "latest",
+    "gulp-notify": "latest",
+    "gulp-pug": "latest",
+    "gulp-sourcemaps": "latest",
+    "gulp-stylus": "latest",
+    "jeet": "latest",
+    "nib": "latest",
     "rollup": "latest",
     "rollup-plugin-buble": "latest",
-    "uglify-js": "latest"
+    "rollup-plugin-commonjs": "latest",
+    "rollup-plugin-node-resolve": "latest",
+    "rollup-plugin-uglify": "latest",
+    "rupture": "latest",
+    "vue": "latest"
+  },
+  "scripts": {
+    "bundle": "gulp lib",
+    "build": "npm run bundle",
+    "postinstall": "npm run build"
   }
 }
