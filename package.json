@@ -6,12 +6,12 @@
   "jsnext:main": "randkey.js",
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/alexbruno/randkey.git"
+    "url": "git+https://gitlab.com/conext/randkey.git"
   },
   "bugs": {
-    "url": "https://gitlab.com/alexbruno/randkey/issues"
+    "url": "https://gitlab.com/conext/randkey/issues"
   },
-  "homepage": "https://gitlab.com/alexbruno/randkey#readme",
+  "homepage": "https://gitlab.com/conext/randkey#readme",
   "author": "Alex Bruno <master@conext.online>",
   "keywords": [
     "random",
@@ -41,10 +41,5 @@
     "rollup-plugin-uglify": "latest",
     "rupture": "latest",
     "vue": "latest"
-  },
-  "scripts": {
-    "bundle": "gulp lib",
-    "build": "npm run bundle",
-    "postinstall": "npm run build"
   }
 }
