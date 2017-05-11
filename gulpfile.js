@@ -3,7 +3,7 @@ const gulp = require('gulp'),
 	server = require('gulp-live-server'),
 	system = require('node-notifier'),
 	rollup = require('rollup').rollup,
-	bubble = require('rollup-plugin-buble'),
+	buble = require('rollup-plugin-buble'),
 	uglify = require('rollup-plugin-uglify'),
 	commonjs = require('rollup-plugin-commonjs'),
 	resolve = require('rollup-plugin-node-resolve'),
@@ -24,7 +24,7 @@ const gulp = require('gulp'),
 		return rollup({
 			entry,
 			plugins: [
-				bubble(),
+				buble(),
 				uglify(),
 				commonjs({
 					include: 'node_modules/**'
@@ -83,7 +83,7 @@ gulp.task('pug', done => {
 
 //Rollup
 gulp.task('lib', done => {
-	return bundle('randkey.js', 'randkey.umd.js', 'umd', 'randkey', false)
+	return bundle('randkey.jsx', 'randkey.js', 'umd', 'randkey', false)
 })
 gulp.task('index', done => {
 	return bundle('web/js/index.js', 'web/index.js', 'iife', 'index', 'inline')

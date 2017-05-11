@@ -2,8 +2,8 @@
   "name": "randkey",
   "version": "2.1.1",
   "description": "Simple JS module to generate random keys in various formats, including UUID",
-  "main": "randkey.umd.js",
-  "jsnext:main": "randkey.js",
+  "main": "randkey.js",
+  "jsnext:main": "randkey.jsx",
   "repository": {
     "type": "git",
     "url": "git+https://gitlab.com/conext/randkey.git"
@@ -12,7 +12,7 @@
     "url": "https://gitlab.com/conext/randkey/issues"
   },
   "homepage": "https://gitlab.com/conext/randkey",
-  "author": "Alex Bruno <master@conext.online>",
+  "author": "Alex Bruno <git.alexbr@outlook.com>",
   "keywords": [
     "random",
     "key",
