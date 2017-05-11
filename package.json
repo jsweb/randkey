@@ -1,6 +1,6 @@
 {
   "name": "randkey",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Simple JS module to generate random keys in various formats, including UUID",
   "main": "randkey.js",
   "jsnext:main": "randkey.jsx",
