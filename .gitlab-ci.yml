@@ -1,21 +1,21 @@
 image: node:latest
 
 cache:
-  paths:
-  - node_modules/
+    paths:
+    - node_modules/
 
 before_script:
-   - npm i -g yarn
-   - yarn
+    - npm i -g yarn
+    - yarn
 
 pages:
-  script:
-   - yarn build
-   - yarn test
-   - mkdir public
-   - cp -r mochawesome-report/* public/
-   - cp public/mochawesome.html public/index.html
-   - rm -rf mochawesome-report/
-   artifacts:
-    paths:
-      public
+    script:
+    - yarn build
+    - yarn test
+    - mkdir public
+    - cp -r mochawesome-report/* public/
+    - cp public/mochawesome.html public/index.html
+    - rm -rf mochawesome-report/
+    artifacts:
+        paths:
+        - public
