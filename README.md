@@ -1,24 +1,32 @@
 # randkey
 
-Simple JS module to generate random keys in various formats, including UUID
+Dead simple JS module to generate random keys in various formats, including UUID like.
 
 ***
 
 ## Installation
 
-You can install it with Bower or NPM:
+### CDN
 
-### Bower
-
-`bower i -S randkey`
+```html
+<script src="https://unpkg.com/randkey"></script>
+```
 
 ### NPM
 
 `npm i -S randkey`
 
-If you are using **JSPM** you can install randkey from NPM:
+### Yarn
 
-`jspm i randkey=npm:randkey`
+`yarn add randkey`
+
+### Snipacks
+
+`snipacks add unpkg rk.js randkey`
+
+### Bower
+
+`bower i -S randkey`
 
 ## Usage
 
@@ -44,47 +52,32 @@ require(['randkey'], randkey => {
 
 ### Global
 
-```html
-<script src="path/to/randkey/randkey.umd.js"></script>
-```
+If you add a `script` tag to your HTML, `randkey` object will be global available.
 
 ## Methods
 
-### randkey.rand()
+### randkey.rand(n)
 
-Returns a random number by operations witn `Math.random()` and `Date.now()`.
+Returns a random number or string by operations witn `Math.random()` and `Date.now()`.
 
-```javascript
-randkey.rand() // returns something like 954523098947
-```
+The `n` optional argument must to be a number from 2 to 36 to be used with `toString(n)`. Any other values will be ignored.
 
-### randkey.rand16()
-
-Returns a random number stringified to hexadecimals with `toString(16)`.
+If a valid `n` was provided, the method will return a string, else will return a number.
 
 ```javascript
-randkey.rand16() // returns something like 'b812712a08'
+randkey.rand()      // something like 555847878175
+randkey.rand(2)     // something like '1001010000010000000001111111010100000110'
+randkey.rand(8)     // something like '2036103777231'
+randkey.rand(16)    // something like '12a82628ee7'
+randkey.rand(32)    // something like '18vq5b2hq'
+randkey.rand(36)    // something like 'fdqlsnvb'
 ```
 
-### randkey.rand32()
-
-Returns a random number stringified with `toString(32)`.
-
-```javascript
-randkey.rand32() // returns something like 'n0972ag8'
-```
-
-### randkey.rand36()
-
-Returns a random number stringified with `toString(36)`.
-
-```javascript
-randkey.rand36() // returns something like 'a36sxqtk'
-```
+**Deprecation note:** the old methods `rand16()`, `rand32()` and `rand36()` was deprecated in favour to `rand(n)`.
 
 ### randkey.id4bits()
 
-Returns a random string with 4 characters.
+Returns hexadecimal number as string with 4 chars.
 
 ```javascript
 randkey.id4bits() // returns something like 'h9c1'
@@ -92,7 +85,7 @@ randkey.id4bits() // returns something like 'h9c1'
 
 ### randkey.id8bits()
 
-Returns a random string with 8 characters.
+Returns hexadecimal number as string with 8 chars.
 
 ```javascript
 randkey.id8bits() // returns something like 'bf9c61ed'
@@ -100,7 +93,7 @@ randkey.id8bits() // returns something like 'bf9c61ed'
 
 ### randkey.id16bits()
 
-Returns a random string with 16 characters.
+Returns hexadecimal number as string with 16 chars.
 
 ```javascript
 randkey.id16bits() // returns something like '6c1f3ac8e0ba611d'
@@ -108,7 +101,7 @@ randkey.id16bits() // returns something like '6c1f3ac8e0ba611d'
 
 ### randkey.id32bits()
 
-Returns a random string with 32 characters.
+Returns hexadecimal number as string with 32 chars.
 
 ```javascript
 randkey.id32bits() // returns something like 'f17e3ac8e0ba925a61ed19016c1f2eb0'
@@ -116,7 +109,7 @@ randkey.id32bits() // returns something like 'f17e3ac8e0ba925a61ed19016c1f2eb0'
 
 ### randkey.uuid()
 
-Returns a random UUID pattern string.
+Returns UUID like string.
 
 ```javascript
 randkey.uuid() // returns something like 'cb3721d3-efbf-4cbc-ab97-d267a2ce198b'
