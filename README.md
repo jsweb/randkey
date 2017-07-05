@@ -24,10 +24,6 @@ Dead simple JS module to generate random keys in various formats, including UUID
 
 `snipacks add unpkg rk.js randkey`
 
-### Bower
-
-`bower i -S randkey`
-
 ## Usage
 
 ### ES6
