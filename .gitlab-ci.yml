@@ -12,10 +12,7 @@ pages:
     script:
     - yarn build
     - yarn test
-    - mkdir public
-    - cp -r mochawesome-report/* public/
-    - cp public/mochawesome.html public/index.html
-    - rm -rf mochawesome-report/
+    - yarn deploy
     artifacts:
         paths:
         - public

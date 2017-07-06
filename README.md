@@ -1,6 +1,6 @@
 # randkey
 
-Dead simple JS module to generate random keys in various formats, including UUID like.
+Dead simple JS module to generate random id/key/hash in various formats, including UUID like.
 
 ***
 

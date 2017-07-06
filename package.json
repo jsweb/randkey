@@ -1,7 +1,7 @@
 {
   "name": "randkey",
   "version": "2.2.2",
-  "description": "Dead simple JS module to generate random keys in various formats, including UUID like",
+  "description": "Dead simple JS module to generate random id/key/hash in various formats, including UUID like",
   "main": "randkey.js",
   "jsnext:main": "randkey.jsx",
   "repository": {
@@ -21,8 +21,9 @@
   ],
   "license": "MIT",
   "scripts": {
+    "build": "rollup -c",
     "test": "mocha --reporter mochawesome",
-    "build": "rollup -c"
+    "deploy": "mkdir public && cp -r mochawesome-report/* public/ && cp public/mochawesome.html public/index.html && rm -rf mochawesome-report"
   },
   "devDependencies": {
     "mocha": "^3.4.2",
