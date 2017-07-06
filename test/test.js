@@ -43,8 +43,7 @@ describe('randkey', () => {
         it('hexadecimal number as string with 4 chars', () => {
             assert.equal(false, isNaN(parseInt(id4, 16)))
             assert.equal(true, typeof id4 === 'string')
-            assert.equal(true, /\w+/.test(id4))
-            assert.equal(4, id4.length)
+            assert.equal(true, /[a-f\d]{4}/.test(id4))
         })
     })
     
@@ -52,8 +51,7 @@ describe('randkey', () => {
         it('hexadecimal number as string with 8 chars', () => {
             assert.equal(false, isNaN(parseInt(id8, 16)))
             assert.equal(true, typeof id8 === 'string')
-            assert.equal(true, /\w+/.test(id8))
-            assert.equal(8, id8.length)
+            assert.equal(true, /[a-f\d]{8}/.test(id8))
         })
     })
     
@@ -61,8 +59,7 @@ describe('randkey', () => {
         it('hexadecimal number as string with 16 chars', () => {
             assert.equal(false, isNaN(parseInt(i16, 16)))
             assert.equal(true, typeof i16 === 'string')
-            assert.equal(true, /\w+/.test(i16))
-            assert.equal(16, i16.length)
+            assert.equal(true, /[a-f\d]{16}/.test(i16))
         })
     })
     
@@ -70,8 +67,7 @@ describe('randkey', () => {
         it('hexadecimal number as string with 32 chars', () => {
             assert.equal(false, isNaN(parseInt(i32, 16)))
             assert.equal(true, typeof i32 === 'string')
-            assert.equal(true, /\w+/.test(i32))
-            assert.equal(32, i32.length)
+            assert.equal(true, /[a-f\d]{32}/.test(i32))
         })
     })
     

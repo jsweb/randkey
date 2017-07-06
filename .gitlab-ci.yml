@@ -4,15 +4,23 @@ cache:
     paths:
     - node_modules/
 
-before_script:
-    - npm i -g yarn
-    - yarn
+build:
+    stage: build
+    script:
+        - yarn
+        - yarn build
+
+report:
+    stage: test
+    script:
+        - yarn report
 
 pages:
+    stage: deploy
+    only:
+        - master
     script:
-    - yarn build
-    - yarn report
-    - yarn deploy
+        - yarn deploy
     artifacts:
         paths:
-        - public
+            - public
