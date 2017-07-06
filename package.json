@@ -15,14 +15,17 @@
   "author": "Alex Bruno <git.alexbr@outlook.com>",
   "keywords": [
     "random",
+    "id",
     "key",
+    "hash",
     "uuid",
     "js"
   ],
   "license": "MIT",
   "scripts": {
+    "test": "mocha",
     "build": "rollup -c",
-    "test": "mocha --reporter mochawesome",
+    "report": "mocha --reporter mochawesome",
     "deploy": "mkdir public && cp -r mochawesome-report/* public/ && cp public/mochawesome.html public/index.html && rm -rf mochawesome-report"
   },
   "devDependencies": {

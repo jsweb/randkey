@@ -11,7 +11,7 @@ before_script:
 pages:
     script:
     - yarn build
-    - yarn test
+    - yarn report
     - yarn deploy
     artifacts:
         paths:

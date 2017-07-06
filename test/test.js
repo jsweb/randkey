@@ -76,8 +76,8 @@ describe('randkey', () => {
     })
     
     describe('uuid()', () => {
-        it('UUID like string', () => {
-            assert.equal(true, /^\w{8}-\w{4}-\w{4}-\w{4}-\w{12}$/.test(uuid))
+        it('valid UUID v4 string', () => {
+            assert.equal(true, /^\w{8}-\w{4}-4\w{3}-[89ab]\w{3}-\w{12}$/.test(uuid))
         })
     })
 })
