@@ -6,12 +6,12 @@
   "jsnext:main": "randkey.jsx",
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/tecno.site/randkey.git"
+    "url": "git+https://gitlab.com/tecnos/randkey.git"
   },
   "bugs": {
-    "url": "https://gitlab.com/tecno.site/randkey/issues"
+    "url": "https://gitlab.com/tecnos/randkey/issues"
   },
-  "homepage": "https://gitlab.com/tecno.site/randkey",
+  "homepage": "https://gitlab.com/tecnos/randkey",
   "author": "Alex Bruno <git.alexbr@outlook.com>",
   "keywords": [
     "random",
