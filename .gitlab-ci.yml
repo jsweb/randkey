@@ -22,6 +22,7 @@ pages:
     only:
         - master
     script:
+        - yarn report
         - yarn deploy
     artifacts:
         paths:
