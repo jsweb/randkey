@@ -4,6 +4,8 @@ Dead simple JS module to generate random id/key/hash in various formats, includi
 
 ***
 
+[![build status](https://gitlab.com/tecnos/randkey/badges/master/build.svg)](https://gitlab.com/tecnos/randkey/commits/master)
+
 ## Installation
 
 ### CDN
@@ -76,7 +78,7 @@ randkey.rand(36)    // 'fdqlsnvb'
 hexadecimal number as string with 4 chars.
 
 ```javascript
-randkey.id4bits() // 'h9c1'
+randkey.id4bits() // 'f9c1'
 ```
 
 ### randkey.id8bits()
