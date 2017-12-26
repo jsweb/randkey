@@ -105,6 +105,14 @@ hexadecimal number as string with 32 chars.
 randkey.id32bits() // 'f17e3ac8e0ba925a61ed19016c1f2eb0'
 ```
 
+### randkey.id64bits()
+
+hexadecimal number as string with 64 chars.
+
+```javascript
+randkey.id64bits() // 'f17e3ac8e0ba925a61ed19016c1f2eb0f17e3ac8e0ba925a61ed19016c1f2eb0'
+```
+
 ### randkey.uuid()
 
 Valid UUID v4 string.
