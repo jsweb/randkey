@@ -1,6 +1,6 @@
 'use strict';
 
-const rk = require('../randkey'),
+const rk = require('./dist/randkey'),
   assert = require('assert'),
   [rnd, id4, id8, i16, i32, i64, uuid] = [
     [...Array(50).keys()].map(i => rk.rand(i)),

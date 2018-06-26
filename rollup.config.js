@@ -1,13 +1,18 @@
+import resolve from 'rollup-plugin-node-resolve'
 import buble from 'rollup-plugin-buble'
-import uglify from 'rollup-plugin-uglify'
+import {
+  uglify
+} from 'rollup-plugin-uglify'
 
 export default {
-  input: 'randkey.jsx',
-  amd: { id: 'randkey' },
+  input: 'src/randkey.js',
   output: {
     format: 'umd',
     name: 'randkey',
-    file: 'randkey.js'
+    file: 'dist/randkey.js',
+    amd: {
+      id: 'randkey'
+    }
   },
-	plugins: [buble(), uglify()]
+  plugins: [resolve(), buble(), uglify()]
 }

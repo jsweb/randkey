@@ -1,3 +1,5 @@
+import uuid from 'UUID'
+
 class RandKey {
   rand(n = 0) {
     const rnd = Math.random().toString().substr(2),
@@ -27,10 +29,8 @@ class RandKey {
     return `${this.id32bits()}${this.id32bits()}`
   }
 
-  uuid() { //-> https://gist.github.com/LeverOne/1308368
-    let a, b;
-    for (b = a = ''; a++ < 36; b += a * 51 & 52 ? (a ^ 15 ? 8 ^ Math.random() * (a ^ 20 ? 16 : 4) : 4).toString(16) : '-');
-    return b
+  uuid() {
+    return uuid()
   }
 }
 

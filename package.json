@@ -1,17 +1,17 @@
 {
-  "name": "randkey",
+  "name": "@jsweb/randkey",
   "version": "2.3.0",
   "description": "Dead simple JS module to generate random id/key/hash in various formats, including UUID like",
-  "main": "randkey.js",
-  "jsnext:main": "randkey.jsx",
+  "main": "dist/randkey.js",
+  "esnext": "src/randkey.js",
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/tecnos/randkey.git"
+    "url": "git+https://gitlab.com/webjs/randkey.git"
   },
   "bugs": {
-    "url": "https://gitlab.com/tecnos/randkey/issues"
+    "url": "https://gitlab.com/webjs/randkey/issues"
   },
-  "homepage": "https://gitlab.com/tecnos/randkey",
+  "homepage": "https://gitlab.com/webjs/randkey",
   "author": "Alex Bruno <git.alexbr@outlook.com>",
   "keywords": [
     "random",
@@ -33,6 +33,10 @@
     "mochawesome": "latest",
     "rollup": "latest",
     "rollup-plugin-buble": "latest",
+    "rollup-plugin-node-resolve": "latest",
     "rollup-plugin-uglify": "latest"
+  },
+  "dependencies": {
+    "UUID": "gist:8a2d5835f68392116637d1e6ad1929da"
   }
 }
