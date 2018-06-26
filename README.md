@@ -1,56 +1,38 @@
-# randkey
+# @jsweb/randkey
 
 Dead simple JS module to generate random id/key/hash in various formats, including valid UUID v4.
 
 ***
 
-[![build status](https://gitlab.com/tecnos/randkey/badges/master/build.svg)](https://gitlab.com/tecnos/randkey/commits/master)
+[![build status](https://gitlab.com/webjs/randkey/badges/master/build.svg)](https://gitlab.com/webjs/randkey/commits/master)
 
 ## Installation
+
+You can install it with NPM, Yarn or via Unpkg CDN:
 
 ### CDN
 
 ```html
-<script src="https://unpkg.com/randkey"></script>
+<script src="https://unpkg.com/@jsweb/randkey"></script>
 ```
-
-### NPM
-
-`npm i -S randkey`
-
-### Yarn
-
-`yarn add randkey`
-
-### Snipacks
-
-`snipacks add unpkg rk.js randkey`
 
 ## Usage
 
 ### ES6
 
 ```javascript
-import randkey from 'randkey'
+import randkey from '@jsweb/randkey'
 ```
 
 ### CommonJS
 
 ```javascript
-let randkey = require('randkey')
-```
-
-### AMD
-
-```javascript
-require(['randkey'], randkey => {
-    //codes go here
-})
+let randkey = require('@jsweb/randkey')
 ```
 
 ### Global
 
-If you add a `script` tag to your HTML, `randkey` object will be global available.
+If you install a `script` tag to your HTML, `randkey` object will be global available.
 
 ## Methods
 
