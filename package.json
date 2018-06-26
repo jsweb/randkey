@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://gitlab.com/webjs/randkey/issues"
   },
-  "homepage": "https://gitlab.com/webjs/randkey",
+  "homepage": "https://randkey.jsweb.app",
   "author": "Alex Bruno <git.alexbr@outlook.com>",
   "keywords": [
     "random",
@@ -25,8 +25,7 @@
   "scripts": {
     "test": "mocha",
     "build": "rollup -c",
-    "report": "mocha --reporter mochawesome",
-    "deploy": "mkdir public && cp -r mochawesome-report/* public/ && cp public/mochawesome.html public/index.html && rm -rf mochawesome-report"
+    "report": "mocha --reporter mochawesome"
   },
   "devDependencies": {
     "mocha": "latest",

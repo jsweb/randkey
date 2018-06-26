@@ -9,24 +9,24 @@ class RandKey {
     return num.toString(rdx)
   }
 
-  id4bits() {
+  id4() {
     return this.rand(16).substr(0, 4)
   }
 
-  id8bits() {
+  id8() {
     return this.rand(16).substr(0, 8)
   }
 
-  id16bits() {
-    return `${this.id8bits()}${this.id8bits()}`
+  id16() {
+    return `${this.id8()}${this.id8()}`
   }
 
-  id32bits() {
-    return `${this.id16bits()}${this.id16bits()}`
+  id32() {
+    return `${this.id16()}${this.id16()}`
   }
 
-  id64bits() {
-    return `${this.id32bits()}${this.id32bits()}`
+  id64() {
+    return `${this.id32()}${this.id32()}`
   }
 
   uuid() {

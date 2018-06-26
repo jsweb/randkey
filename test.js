@@ -2,13 +2,13 @@
 
 const rk = require('./dist/randkey'),
   assert = require('assert'),
-  [rnd, id4, id8, i16, i32, i64, uuid] = [
+  [rnd, id4, id8, id16, id32, id64, uuid] = [
     [...Array(50).keys()].map(i => rk.rand(i)),
-    rk.id4bits(),
-    rk.id8bits(),
-    rk.id16bits(),
-    rk.id32bits(),
-    rk.id64bits(),
+    rk.id4(),
+    rk.id8(),
+    rk.id16(),
+    rk.id32(),
+    rk.id64(),
     rk.uuid()
   ]
 
@@ -48,43 +48,43 @@ describe('randkey', () => {
     })
   })
 
-  describe('id4bits()', () => {
-    it('hexadecimal number as 4 chars string', () => {
+  describe('id4()', () => {
+    it(`string with 4 hexadecimal chars : ${id4}`, () => {
       assert.equal(false, isNaN(parseInt(id4, 16)))
       assert.equal(true, typeof id4 === 'string')
       assert.equal(true, /[a-f\d]{4}/.test(id4))
     })
   })
 
-  describe('id8bits()', () => {
-    it('hexadecimal number as 8 chars string', () => {
+  describe('id8()', () => {
+    it(`string with 8 hexadecimal chars : ${id8}`, () => {
       assert.equal(false, isNaN(parseInt(id8, 16)))
       assert.equal(true, typeof id8 === 'string')
       assert.equal(true, /[a-f\d]{8}/.test(id8))
     })
   })
 
-  describe('id16bits()', () => {
-    it('hexadecimal number as 16 chars string', () => {
-      assert.equal(false, isNaN(parseInt(i16, 16)))
-      assert.equal(true, typeof i16 === 'string')
-      assert.equal(true, /[a-f\d]{16}/.test(i16))
+  describe('id16()', () => {
+    it(`string with 16 hexadecimal chars : ${id16}`, () => {
+      assert.equal(false, isNaN(parseInt(id16, 16)))
+      assert.equal(true, typeof id16 === 'string')
+      assert.equal(true, /[a-f\d]{16}/.test(id16))
     })
   })
 
-  describe('id32bits()', () => {
-    it('hexadecimal number as 32 chars string', () => {
-      assert.equal(false, isNaN(parseInt(i32, 16)))
-      assert.equal(true, typeof i32 === 'string')
-      assert.equal(true, /[a-f\d]{32}/.test(i32))
+  describe('id32()', () => {
+    it(`string with 32 hexadecimal chars : ${id32}`, () => {
+      assert.equal(false, isNaN(parseInt(id32, 16)))
+      assert.equal(true, typeof id32 === 'string')
+      assert.equal(true, /[a-f\d]{32}/.test(id32))
     })
   })
 
-  describe('id64bits()', () => {
-    it('hexadecimal number as 64 chars string', () => {
-      assert.equal(false, isNaN(parseInt(i64, 16)))
-      assert.equal(true, typeof i64 === 'string')
-      assert.equal(true, /[a-f\d]{64}/.test(i64))
+  describe('id64()', () => {
+    it(`string with 64 hexadecimal chars : ${id64}`, () => {
+      assert.equal(false, isNaN(parseInt(id64, 16)))
+      assert.equal(true, typeof id64 === 'string')
+      assert.equal(true, /[a-f\d]{64}/.test(id64))
     })
   })
 
