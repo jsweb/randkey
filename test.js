@@ -12,7 +12,7 @@ const rk = require('./dist/randkey'),
     rk.uuid()
   ]
 
-describe('randkey', () => {
+describe('@jsweb/randkey', () => {
   describe('rand(n)', () => {
     it('long integer string if n < 11', () => {
       rnd.filter((k, i) => i < 11).forEach(k => {
