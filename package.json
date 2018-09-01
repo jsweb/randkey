@@ -23,7 +23,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "rollup -c && npm t",
+    "dist": "rollup -c && npm t",
     "report": "mocha dist/test --reporter mochawesome --reporter-options reportTitle=@jsweb/randkey",
     "test": "mocha dist/test"
   },
