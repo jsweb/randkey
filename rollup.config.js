@@ -1,23 +1,14 @@
-import pkg from './package.json'
 import resolve from 'rollup-plugin-node-resolve'
 import common from 'rollup-plugin-commonjs'
 import babel from 'rollup-plugin-babel'
 
-const author = `/**
- * @author Alex Bruno Cáceres
- * @email git.alexbr@outlook.com
- * @date 2016-06-26 03:21:18
- * @desc Simple JS module to generate random id/key/hash in various formats, including UUID
- */`
-
 export default [{
-  input: 'src/randkey.js',
+  input: 'src/main.js',
   plugins: [babel()],
   output: {
     format: 'umd',
     name: 'randkey',
-    file: 'dist/randkey.js',
-    banner: author
+    file: 'dist/main.js'
   }
 }, {
   input: 'src/test.js',

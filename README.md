@@ -1,6 +1,6 @@
 # @jsweb/randkey
 
-Dead simple JS module to generate random id/key/hash in various formats, including valid UUID v4.
+Simple JS module to generate random id/key/hash in various formats, including UUID.
 
 ***
 

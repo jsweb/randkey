@@ -1,5 +1,5 @@
 import { equal } from 'assert';
-import rk from './randkey';
+import rk from './main';
 
 const [rnd, id4, id8, id16, id32, id64, uuid] = [
   [...Array(50).keys()].map(rk.rand),
