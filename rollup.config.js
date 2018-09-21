@@ -16,13 +16,4 @@ export default [{
     name: 'randkey',
     file: 'dist/main.js'
   }
-}, {
-  input: 'src/test.ts',
-  plugins: [typescript()],
-  external: ['assert', './main'],
-  output: {
-    format: 'cjs',
-    name: 'test',
-    file: 'dist/test.js'
-  }
 }]

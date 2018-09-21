@@ -4,8 +4,8 @@
   "description": "Simple JS module to generate random id/key/hash in various formats, including UUID v4",
   "main": "dist/main.js",
   "browser": "dist/main.js",
-  "esnext": "dist/esnext.js",
   "types": "dist/main.d.ts",
+  "esnext": "dist/esnext.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jsweb/randkey.git"
@@ -26,15 +26,19 @@
   "license": "MIT",
   "scripts": {
     "dist": "run-s dist:*",
-    "dist:clean": "rimraf dist mocha*",
-    "dist:types": "tsc --emitDeclarationOnly",
+    "dist:clean": "rimraf dist",
+    "dist:test": "npm run test:unit",
     "dist:lint": "tslint -p . -c tslint.json",
+    "dist:types": "tsc --emitDeclarationOnly",
     "dist:build": "rollup -c",
     "dist:minify": "minify dist/main.js -d dist",
-    "dist:banner": "concat src/author.ts dist/main.js -o dist/main.js",
-    "report": "mocha dist/test --reporter mochawesome --reporter-options reportTitle=@jsweb/randkey",
-    "test": "npm run dist && npm run report",
-    "prepare": "npm t"
+    "dist:main": "concat src/author.ts dist/main.js -o dist/main.js",
+    "dist:esnext": "concat src/author.ts dist/esnext.js -o dist/esnext.js",
+    "test": "run-s test:*",
+    "test:clean": "rimraf mocha*",
+    "test:unit": "mocha src/**/*.test.ts --compilers ts:ts-node/register",
+    "test:report": "npm run test:unit -- --reporter mochawesome --reporter-options reportTitle=@jsweb/randkey",
+    "prepare": "npm run dist"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.5",
@@ -46,6 +50,7 @@
     "rimraf": "^2.6.2",
     "rollup": "^0.65.2",
     "rollup-plugin-typescript": "^1.0.0",
+    "ts-node": "^7.0.1",
     "tslib": "^1.9.3",
     "tslint": "^5.11.0",
     "typescript": "^3.0.3"

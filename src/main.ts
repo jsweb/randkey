@@ -2,7 +2,7 @@ const rfc = [8, 9, 'a', 'b'];
 
 const pick = (arr: any[]) => arr[Math.floor(Math.random() * arr.length)];
 
-export default {
+const randkey = {
   rand(n: any) {
     const vld = n && isFinite(n) && n >= 2 && n < 37;
     const rdx = vld ? parseInt(n, 10) : 10;
@@ -41,3 +41,5 @@ export default {
     ].join('-');
   },
 };
+
+export default randkey;
