@@ -11,49 +11,40 @@ const [rnd, id4, id8, id16, id32, id64, uuid] = [
   rk.uuid(),
 ];
 
+const big = (k: string) => {
+  const val = Number(k);
+  equal(true, typeof k === 'string');
+  equal(true, Number.isInteger(val));
+  equal(true, val > 1e6);
+};
+
 describe('@jsweb/randkey', () => {
   describe('rand(n)', () => {
-    it('long integer string if n < 11', () => {
+    it('big integer string if n < 11', () => {
       rnd
-        .filter((k, i) => i < 11)
+        .filter((k, i) => k && i < 11)
+        .forEach(big);
+    });
+
+    it('alphanumerical string between 8 and 12 chars if 11 <= n < 37', () => {
+      rnd
+        .filter((k, i) => k && i >= 11 && i < 37)
         .forEach((k) => {
-          const val = Number(k);
           equal(true, typeof k === 'string');
-          equal(true, Number.isInteger(val));
-          equal(true, val > 1e6);
+          equal(true, /[a-z\d]{8,12}/.test(k));
         });
     });
 
-    it('alphanumerical string between 10 and 17 chars if 11 <= n < 37', () => {
+    it('big integer string if n >= 37', () => {
       rnd
-        .filter((k, i) => i >= 11 && i < 37)
-        .forEach((k) => {
-          equal(true, typeof k === 'string');
-          equal(true, k.length < 18);
-          equal(true, /[a-z\d]{10,17}/.test(k));
-        });
+        .filter((k, i) => k && i >= 37)
+        .forEach(big);
     });
 
-    it('long integer string if n >= 37', () => {
-      rnd
-        .filter((k, i) => i >= 37)
-        .forEach((k) => {
-          const val = Number(k);
-          equal(true, typeof k === 'string');
-          equal(true, Number.isInteger(val));
-          equal(true, val > 1e6);
-        });
-    });
-
-    it('long integer string if n is not a valid number', () => {
+    it('big integer string if n is not a valid number', () => {
       [null, undefined, true, false, '', 'lorem ipsum', {}, []]
         .map(rk.rand)
-        .forEach((k) => {
-          const val = Number(k);
-          equal(true, typeof k === 'string');
-          equal(true, Number.isInteger(val));
-          equal(true, val > 1e6);
-        });
+        .forEach(big);
     });
   });
 

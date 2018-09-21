@@ -1,19 +1,25 @@
-import resolve from 'rollup-plugin-node-resolve'
-import common from 'rollup-plugin-commonjs'
-import babel from 'rollup-plugin-babel'
+import typescript from 'rollup-plugin-typescript'
 
 export default [{
-  input: 'src/main.js',
-  plugins: [babel()],
+  input: 'src/main.ts',
+  plugins: [typescript()],
+  output: {
+    format: 'es',
+    name: 'randkey',
+    file: 'dist/esnext.js'
+  }
+}, {
+  input: 'src/main.ts',
+  plugins: [typescript()],
   output: {
     format: 'umd',
     name: 'randkey',
     file: 'dist/main.js'
   }
 }, {
-  input: 'src/test.js',
-  plugins: [common(), resolve()],
-  external: ['assert', './randkey'],
+  input: 'src/test.ts',
+  plugins: [typescript()],
+  external: ['assert', './main'],
   output: {
     format: 'cjs',
     name: 'test',
