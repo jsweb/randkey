@@ -1,6 +1,6 @@
 {
   "name": "@jsweb/randkey",
-  "version": "3.0.5",
+  "version": "3.1.0",
   "description": "Simple JS module to generate random id/key/hash in various formats, including UUID v4",
   "main": "dist/main.js",
   "browser": "dist/main.js",
