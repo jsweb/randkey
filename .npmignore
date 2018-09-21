@@ -1,5 +1,5 @@
 src
-mocha-*
+mocha*
 netlify.toml
 rollup.config.js
 ts*.json

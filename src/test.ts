@@ -26,12 +26,12 @@ describe('@jsweb/randkey', () => {
         .forEach(big);
     });
 
-    it('alphanumerical string between 8 and 12 chars if 11 <= n < 37', () => {
+    it('alphanumerical string with 7 to 12 chars if 11 <= n < 37', () => {
       rnd
         .filter((k, i) => k && i >= 11 && i < 37)
         .forEach((k) => {
           equal(true, typeof k === 'string');
-          equal(true, /[a-z\d]{8,12}/.test(k));
+          equal(true, /[a-z\d]{7,12}/.test(k));
         });
     });
 

@@ -4,7 +4,7 @@ export default [{
   input: 'src/main.ts',
   plugins: [typescript()],
   output: {
-    format: 'es',
+    format: 'esm',
     name: 'randkey',
     file: 'dist/esnext.js'
   }

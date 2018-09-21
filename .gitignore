@@ -1,5 +1,5 @@
 dist
-mocha-*
+mocha*
 
 # Logs
 logs

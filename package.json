@@ -3,7 +3,9 @@
   "version": "3.0.4",
   "description": "Simple JS module to generate random id/key/hash in various formats, including UUID v4",
   "main": "dist/main.js",
+  "browser": "dist/main.js",
   "esnext": "dist/esnext.js",
+  "types": "dist/main.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jsweb/randkey.git"
@@ -24,14 +26,15 @@
   "license": "MIT",
   "scripts": {
     "dist": "run-s dist:*",
-    "dist:clean": "rimraf dist",
-    "dist:check": "tsc --noEmit",
+    "dist:clean": "rimraf dist mocha*",
+    "dist:types": "tsc --emitDeclarationOnly",
     "dist:lint": "tslint -p . -c tslint.json",
     "dist:build": "rollup -c",
     "dist:minify": "minify dist/main.js -d dist",
-    "dist:banner": "concat src/author.js dist/main.js -o dist/main.js",
+    "dist:banner": "concat src/author.ts dist/main.js -o dist/main.js",
     "report": "mocha dist/test --reporter mochawesome --reporter-options reportTitle=@jsweb/randkey",
-    "test": "npm run dist && npm run report"
+    "test": "npm run dist && npm run report",
+    "prepare": "npm t"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.5",
