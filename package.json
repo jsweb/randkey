@@ -3,9 +3,9 @@
   "version": "3.1.0",
   "description": "Simple JS module to generate random id/key/hash in various formats, including UUID v4",
   "main": "dist/main.js",
-  "browser": "dist/main.js",
-  "types": "dist/main.d.ts",
   "esnext": "dist/esnext.js",
+  "module": "dist/esnext.js",
+  "types": "dist/main.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jsweb/randkey.git"
