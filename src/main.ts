@@ -6,7 +6,7 @@ const randkey = {
   rand(n: any) {
     const vld = n && isFinite(n) && n >= 2 && n < 37;
     const rdx = vld ? parseInt(n, 10) : 10;
-    const rnd = Math.random() * Date.now();
+    const rnd = Date.now() * Math.random();
     return Math.round(rnd).toString(rdx);
   },
 
@@ -39,6 +39,34 @@ const randkey = {
       `${x}${this.rand(16).substr(0, 3)}`,
       this.id16().substr(0, 12),
     ].join('-');
+  },
+
+  puid() {
+    return [
+      this.rand(2),
+      this.rand(4),
+      this.rand(8),
+      this.rand(16),
+      this.rand(32),
+    ].map((str) => str.substr(0, 5)).join('-');
+  },
+
+  huid() {
+    return this.ruid(16);
+  },
+
+  wuid() {
+    return this.ruid(36);
+  },
+
+  ruid(n: any) {
+    return [
+      this.rand(n),
+      this.rand(n),
+      this.rand(n),
+      this.rand(n),
+      this.rand(n),
+    ].map((str) => str.substr(0, 5)).join('-');
   },
 };
 
