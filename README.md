@@ -1,10 +1,15 @@
 # @jsweb/randkey
 
+![js-umd](https://img.shields.io/badge/js-umd-green.svg?style=for-the-badge)
+![ecma-module](https://img.shields.io/badge/ecma-module-green.svg?style=for-the-badge)
+![transpiler-babel](https://img.shields.io/badge/transpiler-babel-green.svg?style=for-the-badge)
+![js-standard-style](https://img.shields.io/badge/code%20style-standard-green.svg?style=for-the-badge)
+
 Simple JS module to generate random id/key/hash in various formats, including UUID.
 
-***
+See tests at [https://randkey.jsweb.app](https://randkey.jsweb.app)
 
-See methods and test at [https://randkey.jsweb.app](https://randkey.jsweb.app)
+***
 
 ## Installation
 

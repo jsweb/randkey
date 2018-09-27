@@ -1,0 +1,12 @@
+{
+  "presets": [
+    "minify"
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        "@babel/env"
+      ]
+    }
+  }
+}
