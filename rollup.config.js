@@ -1,33 +1,38 @@
-import babel from 'rollup-plugin-babel'
+import typescript from 'rollup-plugin-typescript'
+import esmin from 'rollup-plugin-esmin'
 import pack from './package.json'
 
-const dt = new Date
-const modify = dt.toJSON().split('.')[0].replace('T', ' ')
-const author = `/**
-* @name ${pack.name}
-* @version ${pack.version}
-* @desc ${pack.description}
-* @author ${pack.author}
-* @create date 2016-06-26 03:21:18
-* @modify date ${modify}
-*/
-`
+const name = pack.name.split('/')[1]
+const modify = new Date().toJSON().split('.')[0].replace('T', ' ')
+const banner = `/**
+ * @name ${pack.name}
+ * @version ${pack.version}
+ * @desc ${pack.description}
+ * @author ${pack.author}
+ * @create date 2016-06-26 03:21:18
+ * @modify date ${modify}
+ */`
 
 export default [{
-  input: 'src/main.js',
-  plugins: [babel()],
+  input: 'src/module.ts',
+  plugins: [typescript()],
   output: {
-    format: 'umd',
-    name: 'randkey',
-    file: 'dist/main.js',
-    banner: author
+    name,
+    banner,
+    format: 'esm',
+    file: 'dist/module.js'
   }
 }, {
-  input: 'src/module.js',
+  input: 'src/umd.ts',
+  plugins: [
+    typescript(),
+    esmin()
+  ],
   output: {
-    format: 'esm',
-    name: 'randkey',
-    file: 'dist/module.js',
-    banner: author
+    name,
+    banner,
+    format: 'umd',
+    file: 'dist/umd.js'
   }
 }]
+
