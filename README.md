@@ -1,15 +1,14 @@
 # @jsweb/randkey
 
-![js-umd](https://img.shields.io/badge/js-umd-blue.svg?style=for-the-badge)
-![ecma-module](https://img.shields.io/badge/ecma-module-blue.svg?style=for-the-badge)
-![npm-package](https://img.shields.io/badge/npm-package-blue.svg?style=for-the-badge)
-![eslint-standard](https://img.shields.io/badge/eslint-standard-blue.svg?style=for-the-badge)
-![transpiler-babel](https://img.shields.io/badge/transpiler-babel-blue.svg?style=for-the-badge)
-![tests-mocha](https://img.shields.io/badge/tests-mocha-blue.svg?style=for-the-badge)
-
 Simple JS module to generate random id/key/hash in various formats, including UUID.
 
 See tests at [https://randkey.jsweb.app](https://randkey.jsweb.app)
+
+![js-umd](https://img.shields.io/badge/js-umd-blue.svg?style=for-the-badge)
+![ecma-module](https://img.shields.io/badge/ecma-module-blue.svg?style=for-the-badge)
+![npm-package](https://img.shields.io/badge/npm-package-blue.svg?style=for-the-badge)
+![code-typescript](https://img.shields.io/badge/code-typescript-blue.svg?style=for-the-badge)
+![tests-mocha](https://img.shields.io/badge/tests-mocha-blue.svg?style=for-the-badge)
 
 ***
 
