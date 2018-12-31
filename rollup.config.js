@@ -9,7 +9,7 @@ const banner = `/**
  * @version ${pack.version}
  * @desc ${pack.description}
  * @author ${pack.author}
- * @create date 2016-06-26 03:21:18
+ * @create date 2018-12-30 20:19:04
  * @modify date ${modify}
  */`
 
@@ -24,10 +24,7 @@ export default [{
   }
 }, {
   input: 'src/umd.ts',
-  plugins: [
-    typescript(),
-    esmin()
-  ],
+  plugins: [typescript(), esmin()],
   output: {
     name,
     banner,
@@ -35,4 +32,3 @@ export default [{
     file: 'dist/umd.js'
   }
 }]
-
