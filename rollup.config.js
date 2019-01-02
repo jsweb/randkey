@@ -9,7 +9,7 @@ const banner = `/**
  * @version ${pack.version}
  * @desc ${pack.description}
  * @author ${pack.author}
- * @create date 2018-12-30 20:19:04
+ * @create date 2016-06-26 03:21:18
  * @modify date ${modify}
  */`
 
