@@ -1,6 +1,14 @@
-const rfc = [8, 9, 'a', 'b'];
+/**
+ * @name @jsweb/randkey
+ * @version 3.3.5
+ * @desc Simple JS module to generate random id/key/hash in various formats, including UUID v4
+ * @author Alex Bruno Cáceres <git.alexbr@outlook.com>
+ * @create date 2016-06-26 03:21:18
+ * @modify date 2020-06-12 11:53:48
+ */
 
-const pick = (arr: any[] = []) => arr[Math.floor(Math.random() * arr.length)];
+const rfc = [8, 9, 'a', 'b']
+const pick = (arr = []) => arr[Math.floor(Math.random() * arr.length)]
 
 /**
  * Generates a random number as string with a radix.
@@ -19,11 +27,11 @@ const pick = (arr: any[] = []) => arr[Math.floor(Math.random() * arr.length)];
  * rand(32)    // '18vq5b2hq'
  * rand(36)    // 'fdqlsnvb'
  */
-export function rand(radix: any): string {
-  const vld = radix && isFinite(radix) && radix >= 2 && radix < 37;
-  const rdx = vld ? parseInt(radix, 10) : 10;
-  const rnd = Date.now() * Math.random();
-  return Math.round(rnd).toString(rdx);
+function rand(radix) {
+  const vld = radix && isFinite(radix) && radix >= 2 && radix < 37
+  const rdx = vld ? parseInt(radix, 10) : 10
+  const rnd = Date.now() * Math.random()
+  return Math.round(rnd).toString(rdx)
 }
 
 /**
@@ -36,8 +44,8 @@ export function rand(radix: any): string {
  *
  * id4()    // 'f9c1'
  */
-export function id4(): string {
-  return rand(16).substr(0, 4);
+function id4() {
+  return rand(16).substr(0, 4)
 }
 
 /**
@@ -50,8 +58,8 @@ export function id4(): string {
  *
  * id8()    // 'bf9c61ed'
  */
-export function id8(): string {
-  return rand(16).substr(0, 8);
+function id8() {
+  return rand(16).substr(0, 8)
 }
 
 /**
@@ -64,8 +72,8 @@ export function id8(): string {
  *
  * id16()    // '6c1f3ac8e0ba611d'
  */
-export function id16(): string {
-  return `${id8()}${id8()}`;
+function id16() {
+  return `${id8()}${id8()}`
 }
 
 /**
@@ -78,8 +86,8 @@ export function id16(): string {
  *
  * id32()    // 'f17e3ac8e0ba925a61ed19016c1f2eb0'
  */
-export function id32(): string {
-  return `${id16()}${id16()}`;
+function id32() {
+  return `${id16()}${id16()}`
 }
 
 /**
@@ -92,8 +100,8 @@ export function id32(): string {
  *
  * id64()    // 'f17e3ac8e0ba925a61ed19016c1f2eb0f17e3ac8e0ba925a61ed19016c1f2eb0'
  */
-export function id64(): string {
-  return `${id32()}${id32()}`;
+function id64() {
+  return `${id32()}${id32()}`
 }
 
 /**
@@ -106,15 +114,15 @@ export function id64(): string {
  *
  * uuid()    // 'c30663ff-a2d3-4e5d-b377-9e561e8e599b'
  */
-export function uuid(): string {
-  const x = pick(rfc);
+function uuid() {
+  const x = pick(rfc)
   return [
     id8(),
     id4(),
     `4${rand(16).substr(0, 3)}`,
     `${x}${rand(16).substr(0, 3)}`,
     id16().substr(0, 12),
-  ].join('-');
+  ].join('-')
 }
 
 /**
@@ -127,14 +135,10 @@ export function uuid(): string {
  *
  * puid()    // 10100-13110-42720-98222-13prn
  */
-export function puid(): string {
-  return [
-    rand(2),
-    rand(4),
-    rand(8),
-    rand(16),
-    rand(32),
-  ].map((str) => str.substr(0, 5)).join('-');
+function puid() {
+  return [rand(2), rand(4), rand(8), rand(16), rand(32)]
+    .map((str) => str.substr(0, 5))
+    .join('-')
 }
 
 /**
@@ -149,14 +153,10 @@ export function puid(): string {
  *
  * ruid(8)    // 15124-22432-17325-45517-15522
  */
-export function ruid(radix: any): string {
-  return [
-    rand(radix),
-    rand(radix),
-    rand(radix),
-    rand(radix),
-    rand(radix),
-  ].map((str) => str.substr(0, 5)).join('-');
+function ruid(radix) {
+  return [rand(radix), rand(radix), rand(radix), rand(radix), rand(radix)]
+    .map((str) => str.substr(0, 5))
+    .join('-')
 }
 
 /**
@@ -170,8 +170,8 @@ export function ruid(radix: any): string {
  *
  * huid()    // d74b8-124e7-15854-15c73-82909
  */
-export function huid(): string {
-  return ruid(16);
+function huid() {
+  return ruid(16)
 }
 
 /**
@@ -185,6 +185,8 @@ export function huid(): string {
  *
  * wuid()    // 7wuiu-e4fw7-ari12-3z50r-iv04x
  */
-export function wuid(): string {
-  return ruid(36);
+function wuid() {
+  return ruid(36)
 }
+
+export { rand, id4, id8, id16, id32, id64, uuid, puid, ruid, huid, wuid }
