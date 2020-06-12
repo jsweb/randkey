@@ -36,7 +36,7 @@ Tree shaking (since v3.3.0):
 import { id16, uuid, ... } from '@jsweb/randkey'
 ```
 
-### Example in HTML (installation not required)
+### From CDN (installation not required)
 
 ```html
 <script type="module">
