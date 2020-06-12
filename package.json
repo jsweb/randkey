@@ -10,10 +10,8 @@
     "major": "npm version major && npm run push",
     "minor": "npm version minor && npm run push",
     "patch": "npm version patch && npm run push",
-    "prepare": "npm run dist",
     "push": "git push && git push --tags",
-    "lint": "prettier --write *.js",
-    "dist": "npm t"
+    "lint": "prettier --write *.js"
   },
   "repository": {
     "type": "git",
