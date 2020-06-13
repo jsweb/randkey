@@ -27,7 +27,7 @@ const pick = (arr = []) => arr[Math.floor(Math.random() * arr.length)]
  * rand(32)    // '18vq5b2hq'
  * rand(36)    // 'fdqlsnvb'
  */
-function rand(radix) {
+export function rand(radix) {
   const vld = radix && isFinite(radix) && radix >= 2 && radix < 37
   const rdx = vld ? parseInt(radix, 10) : 10
   const rnd = Date.now() * Math.random()
@@ -44,7 +44,7 @@ function rand(radix) {
  *
  * id4()    // 'f9c1'
  */
-function id4() {
+export function id4() {
   return rand(16).substr(0, 4)
 }
 
@@ -58,7 +58,7 @@ function id4() {
  *
  * id8()    // 'bf9c61ed'
  */
-function id8() {
+export function id8() {
   return rand(16).substr(0, 8)
 }
 
@@ -72,7 +72,7 @@ function id8() {
  *
  * id16()    // '6c1f3ac8e0ba611d'
  */
-function id16() {
+export function id16() {
   return `${id8()}${id8()}`
 }
 
@@ -86,7 +86,7 @@ function id16() {
  *
  * id32()    // 'f17e3ac8e0ba925a61ed19016c1f2eb0'
  */
-function id32() {
+export function id32() {
   return `${id16()}${id16()}`
 }
 
@@ -100,7 +100,7 @@ function id32() {
  *
  * id64()    // 'f17e3ac8e0ba925a61ed19016c1f2eb0f17e3ac8e0ba925a61ed19016c1f2eb0'
  */
-function id64() {
+export function id64() {
   return `${id32()}${id32()}`
 }
 
@@ -114,7 +114,7 @@ function id64() {
  *
  * uuid()    // 'c30663ff-a2d3-4e5d-b377-9e561e8e599b'
  */
-function uuid() {
+export function uuid() {
   const x = pick(rfc)
   return [
     id8(),
@@ -135,7 +135,7 @@ function uuid() {
  *
  * puid()    // 10100-13110-42720-98222-13prn
  */
-function puid() {
+export function puid() {
   return [rand(2), rand(4), rand(8), rand(16), rand(32)]
     .map((str) => str.substr(0, 5))
     .join('-')
@@ -153,7 +153,7 @@ function puid() {
  *
  * ruid(8)    // 15124-22432-17325-45517-15522
  */
-function ruid(radix) {
+export function ruid(radix) {
   return [rand(radix), rand(radix), rand(radix), rand(radix), rand(radix)]
     .map((str) => str.substr(0, 5))
     .join('-')
@@ -170,7 +170,7 @@ function ruid(radix) {
  *
  * huid()    // d74b8-124e7-15854-15c73-82909
  */
-function huid() {
+export function huid() {
   return ruid(16)
 }
 
@@ -185,8 +185,6 @@ function huid() {
  *
  * wuid()    // 7wuiu-e4fw7-ari12-3z50r-iv04x
  */
-function wuid() {
+export function wuid() {
   return ruid(36)
 }
-
-export { rand, id4, id8, id16, id32, id64, uuid, puid, ruid, huid, wuid }
