@@ -1,8 +1,9 @@
 import { strictEqual as equal } from 'assert'
 import * as rk from './index.js'
 
-const [rnd, id4, id8, id16, id32, id64, uuid, puid, huid, wuid] = [
-  [...Array(50).keys()].map(rk.rand),
+const [rand, hex, id4, id8, id16, id32, id64, uuid, puid, huid, wuid] = [
+  [...Array(50).keys()].map((i) => rk.rand(i)),
+  rk.hex(5),
   rk.id4(),
   rk.id8(),
   rk.id16(),
@@ -14,99 +15,91 @@ const [rnd, id4, id8, id16, id32, id64, uuid, puid, huid, wuid] = [
   rk.wuid(),
 ]
 
-const big = (k) => {
+const bigTest = (k) => {
   const val = Number(k)
   equal(val > 1e9, true, k)
 }
 
+const hexTest = (k, n) => {
+  const pattern = `[a-f\\d]{${n}}`
+  const regex = new RegExp(pattern)
+  const test = regex.test(k)
+  equal(test, true, k)
+}
+
 describe('@jsweb/randkey', () => {
   describe('rand(n)', () => {
-    it('big integer string if n < 11', () => {
-      rnd.filter((k, i) => k && i < 11).forEach(big)
-    })
+    it('big integer string if n < 11', () => rand.slice(0, 11).forEach(bigTest))
 
     it('alphanumerical string with 7 to 12 chars if 11 <= n < 37', () => {
-      rnd
-        .filter((k, i) => k && i >= 11 && i < 37)
-        .forEach((k) => {
-          equal(/[a-z\d]{7,12}/.test(k), true, k)
-        })
+      rand.slice(11, 26).forEach((k) => equal(/[a-z\d]{7,12}/.test(k), true, k))
     })
 
-    it('big integer string if n >= 37', () => {
-      rnd.filter((k, i) => k && i >= 37).forEach(big)
-    })
+    it('big integer string if n >= 37', () => rand.slice(37).forEach(bigTest))
 
     it('big integer string if n is not a valid number', () => {
-      ;[null, undefined, true, false, '', 'lorem ipsum', {}, []]
-        .map(rk.rand)
-        .forEach(big)
+      ;[null, undefined, true, false, 'lorem', {}, []]
+        .map((k) => rk.rand(k))
+        .forEach(bigTest)
     })
+  })
+
+  describe('idHex(n)', () => {
+    it(`string with 'n' hexadecimal chars : ${hex}`, () => hexTest(hex, 5))
   })
 
   describe('id4()', () => {
-    it(`string with 4 hexadecimal chars : ${id4}`, () => {
-      equal(/[a-f\d]{4}/.test(id4), true, id4)
-    })
+    it(`string with 4 hexadecimal chars : ${id4}`, () => hexTest(id4, 4))
   })
 
   describe('id8()', () => {
-    it(`string with 8 hexadecimal chars : ${id8}`, () => {
-      equal(/[a-f\d]{8}/.test(id8), true, id8)
-    })
+    it(`string with 8 hexadecimal chars : ${id8}`, () => hexTest(id8, 8))
   })
 
   describe('id16()', () => {
-    it(`string with 16 hexadecimal chars : ${id16}`, () => {
-      equal(/[a-f\d]{16}/.test(id16), true, id16)
-    })
+    it(`string with 16 hexadecimal chars : ${id16}`, () => hexTest(id16, 16))
   })
 
   describe('id32()', () => {
-    it(`string with 32 hexadecimal chars : ${id32}`, () => {
-      equal(/[a-f\d]{32}/.test(id32), true, id32)
-    })
+    it(`string with 32 hexadecimal chars : ${id32}`, () => hexTest(id32, 32))
   })
 
   describe('id64()', () => {
-    it(`string with 64 hexadecimal chars : ${id64}`, () => {
-      equal(/[a-f\d]{64}/.test(id64), true, id64)
-    })
+    it(`string with 64 hexadecimal chars : ${id64}`, () => hexTest(id64, 64))
   })
 
   describe('uuid()', () => {
     it(`valid UUID v4 : ${uuid}`, () => {
-      equal(/^\w{8}-\w{4}-4\w{3}-[89ab]\w{3}-\w{12}$/.test(uuid), true, uuid)
+      const parts = uuid.split('-')
+
+      hexTest(parts[0], 8)
+      hexTest(parts[1], 4)
+      hexTest(parts[2], 4)
+      hexTest(parts[3], 4)
+      hexTest(parts[4], 12)
+
+      equal(parts[2].startsWith(4), true, parts[2])
+      equal(/^[89ab]/.test(parts[3]), true, parts[3])
     })
   })
 
   describe('puid()', () => {
     it(`progressive base2 unique ID : ${puid}`, () => {
-      equal(
-        /^[01]{5}-[0-3]{5}-[0-7]{5}-[a-f\d]{5}-[a-v\d]{5}$/.test(puid),
-        true,
-        puid,
-      )
+      const regex = /^[01]{5}-[0-3]{5}-[0-7]{5}-[a-f\d]{5}-[a-v\d]{5}$/
+      equal(regex.test(puid), true, puid)
     })
   })
 
   describe('huid()', () => {
     it(`hexadecimal unique ID : ${huid}`, () => {
-      equal(
-        /^[a-f\d]{5}-[a-f\d]{5}-[a-f\d]{5}-[a-f\d]{5}-[a-f\d]{5}$/.test(huid),
-        true,
-        huid,
-      )
+      huid.split('-').forEach((k) => hexTest(k, 5))
     })
   })
 
   describe('wuid()', () => {
     it(`Windows Key like unique ID : ${wuid}`, () => {
-      equal(
-        /^[a-z\d]{5}-[a-z\d]{5}-[a-z\d]{5}-[a-z\d]{5}-[a-z\d]{5}$/.test(wuid),
-        true,
-        wuid,
-      )
+      const regex = /^([a-z\d]{5}-?){5}$/
+      equal(regex.test(wuid), true, wuid)
     })
   })
 })

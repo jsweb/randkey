@@ -4,17 +4,22 @@
  * @desc Simple JS module to generate random id/key/hash in various formats, including UUID v4
  * @author Alex Bruno Cáceres <git.alexbr@outlook.com>
  * @create date 2016-06-26 03:21:18
- * @modify date 2020-06-13 20:12:45
+ * @modify date 2020-09-14 17:44:53
  */
 const rfc = [8, 9, 'a', 'b'];
 const pick = (arr = []) => arr[Math.floor(Math.random() * arr.length)];
+const between = (val, min, max) =>
+  Number.isInteger(val) && val > min && val < max;
 
 /**
- * Generates a random number as string with a radix.
- * A valid optional `radix` parameter can be a number from 2 to 36. Any other values will be ignored.
+ * Generates a random number as string with optional radix and size limit.
+ * The `radix` parameter can be a number from 2 to 36. Default is 10, which generates base 10 random numbers.
+ * The `limit` size parameter can be a number from 1 to 40. Default is 40, which is the bigger possible.
+ * Keep in mind that `radix` can automatic limit the result max size.
  *
  * @export {function}
- * @param {*} [radix] - Optional radix used to convert the number to string.
+ * @param {number} [radix=10] - Optional radix used to convert the number to string.
+ * @param {number} [limit=40] - Optional size limit used to cut the string result.
  * @returns {string}
  * @example
  * import { rand } from '@jsweb/randkey'
@@ -26,15 +31,34 @@ const pick = (arr = []) => arr[Math.floor(Math.random() * arr.length)];
  * rand(32)    // '18vq5b2hq'
  * rand(36)    // 'fdqlsnvb'
  */
-function rand(radix) {
-  const vld = radix && isFinite(radix) && radix >= 2 && radix < 37;
-  const rdx = vld ? parseInt(radix, 10) : 10;
+function rand(radix = 10, limit = 40) {
   const rnd = Date.now() * Math.random();
-  return Math.round(rnd).toString(rdx)
+  const rdx = between(radix, 1, 37) ? radix : 10;
+  const cut = between(limit, 0, 41) ? limit : 40;
+  const result = Math.round(rnd).toString(rdx).substr(0, cut);
+
+  return result
 }
 
 /**
- * Generates a random ID with 4 hexadecimal digits.
+ * Generates a random hexadecimal number as string with optional custom size limit.
+ * Size limit must be from 1 to 11. Default is 11, which is the bigger possible.
+ * It is just an alias for `rand(16, limit)`.
+ *
+ * @export {function}
+ * @param {number} [limit=11] - Optional size limit used to cut the string result.
+ * @returns {string}
+ * @example
+ * import { hex } from '@jsweb/randkey'
+ *
+ * hex(6)    // 'f9c1d0'
+ */
+function hex(limit = 11) {
+  return rand(16, limit)
+}
+
+/**
+ * Generates a random ID with 4 hexadecimal digits. It is just an alias for `hex(4)`.
  *
  * @export {function}
  * @returns {string}
@@ -44,21 +68,21 @@ function rand(radix) {
  * id4()    // 'f9c1'
  */
 function id4() {
-  return rand(16).substr(0, 4)
+  return hex(4)
 }
 
 /**
- * Generates a random ID with 8 hexadecimal digits.
+ * Generates a random ID with 8 hexadecimal digits. It is just an alias for `hex(8)`.
  *
  * @export {function}
  * @returns {string}
  * @example
  * import { id8 } from '@jsweb/randkey'
  *
- * id8()    // 'bf9c61ed'
+ * id8()    // 'd74b8ed'
  */
 function id8() {
-  return rand(16).substr(0, 8)
+  return hex(8)
 }
 
 /**
@@ -104,7 +128,7 @@ function id64() {
 }
 
 /**
- * Generates a valid UUID v4 (RFC 4122 compilant).
+ * Generates a valid UUID v4 (RFC 4122 compliant).
  *
  * @export {function}
  * @returns {string}
@@ -114,13 +138,12 @@ function id64() {
  * uuid()    // 'c30663ff-a2d3-4e5d-b377-9e561e8e599b'
  */
 function uuid() {
-  const x = pick(rfc);
   return [
     id8(),
     id4(),
-    `4${rand(16).substr(0, 3)}`,
-    `${x}${rand(16).substr(0, 3)}`,
-    id16().substr(0, 12),
+    `4${hex(3)}`,
+    `${pick(rfc)}${hex(3)}`,
+    `${hex(6)}${hex(6)}`,
   ].join('-')
 }
 
@@ -135,32 +158,31 @@ function uuid() {
  * puid()    // 10100-13110-42720-98222-13prn
  */
 function puid() {
-  return [rand(2), rand(4), rand(8), rand(16), rand(32)]
-    .map((str) => str.substr(0, 5))
-    .join('-')
+  return [2, 4, 6, 8, 16].map((i) => rand(i, 5)).join('-')
 }
 
 /**
- * Generates a random 5x5 ID using a common radix for all blocks.
- * A valid optional `radix` parameter can be a number from 2 to 36. Any other values will be ignored.
+ * Generates a random 5x5 ID using a common radix for all blocks using `rand(radix, 5)`.
+ * The `radix` parameter can be a number from 2 to 36. Default is 10, which generates base 10 random blocks.
  *
  * @export {function}
- * @param {number} [radix=0] - Optional radix used to convert block numbers to string.
+ * @param {number} [radix=10] - Optional radix used to convert block numbers to string.
  * @returns {string}
  * @example
  * import { ruid } from '@jsweb/randkey'
  *
  * ruid(8)    // 15124-22432-17325-45517-15522
  */
-function ruid(radix) {
-  return [rand(radix), rand(radix), rand(radix), rand(radix), rand(radix)]
-    .map((str) => str.substr(0, 5))
+function ruid(radix = 10) {
+  return Array(5)
+    .fill(radix)
+    .map((i) => rand(i, 5))
     .join('-')
 }
 
 /**
  * Generates a random 5x5 ID with hexadecimal blocks.
- * This is only an alias for `ruid(16)`.
+ * It is just an alias for `ruid(16)`.
  *
  * @export {function}
  * @returns {string}
@@ -174,8 +196,8 @@ function huid() {
 }
 
 /**
- * Generates a random 5x5 ID with full alphanumerical blocks format, like Windows Product Key.
- * This is only an alias for `ruid(36)`.
+ * Generates a random 5x5 ID with alphanumerical blocks, like Windows Product Key.
+ * It is just an alias for `ruid(36)`.
  *
  * @export {function}
  * @returns {string}
@@ -188,4 +210,4 @@ function wuid() {
   return ruid(36)
 }
 
-export { huid, id16, id32, id4, id64, id8, puid, rand, ruid, uuid, wuid };
+export { hex, huid, id16, id32, id4, id64, id8, puid, rand, ruid, uuid, wuid };

@@ -48,136 +48,154 @@ import { id16, uuid, ... } from '@jsweb/randkey'
 
 ## Methods
 
-### rand(radix: any): string
+### rand(radix = 10, limit = 40)
 
-Generates a random number as string with a radix.
+Generates a random number as string with optional radix and size limit.
 
-A valid optional `radix` parameter can be a number from 2 to 36. Any other values will be ignored.
+The `radix` parameter can be a number from 2 to 36. Default is 10, which generates base 10 random numbers.
+
+The `limit` size parameter can be a number from 1 to 40. Default is 40, which is the bigger possible.
+
+Keep in mind that `radix` can automatic limit the result max size.
 
 ```javascript
 import { rand } from '@jsweb/randkey'
 
 rand()
-//>> '555847878175'
+// > '555847878175'
 
 rand(2)
-//>> '1001010000010000000001111111010100000110'
+// > '1001010000010000000001111111010100000110'
 
 rand(8)
-//>> '2036103777231'
+// > '2036103777231'
 
 rand(16)
-//>> '12a82628ee7'
+// > '12a82628ee7'
 
 rand(32)
-//>> '18vq5b2hq'
+// > '18vq5b2hq'
 
 rand(36)
-//>> 'fdqlsnvb'
+// > 'fdqlsnvb'
 ```
 
-### id4(): string
+### hex(limit = 11)
 
-Generates a random ID with 4 hexadecimal digits.
+Generates a random hexadecimal number as string with optional custom size limit.
+
+Size limit must be from 1 to 11. Default is 11, which is the bigger possible.
+
+It is just an alias for `rand(16, limit)`.
+
+```javascript
+import { hex } from '@jsweb/randkey'
+
+hex(6) // > 'f9c1d0'
+```
+
+### id4()
+
+Generates a random ID with 4 hexadecimal digits. It is just an alias for `hex(4)`.
 
 ```javascript
 import { id4 } from '@jsweb/randkey'
 
-id4() //>> 'f9c1'
+id4() // > 'f9c1'
 ```
 
-### id8(): string
+### id8()
 
-Generates a random ID with 8 hexadecimal digits.
+Generates a random ID with 8 hexadecimal digits. It is just an alias for `hex(8)`.
 
 ```javascript
 import { id8 } from '@jsweb/randkey'
 
-id8() //>> 'bf9c61ed'
+id8() // > 'bf9c61ed'
 ```
 
-### id16(): string
+### id16()
 
 Generates a random ID with 16 hexadecimal digits.
 
 ```javascript
 import { id16 } from '@jsweb/randkey'
 
-id16() //>> '6c1f3ac8e0ba611d'
+id16() // > '6c1f3ac8e0ba611d'
 ```
 
-### id32(): string
+### id32()
 
 Generates a random ID with 32 hexadecimal digits.
 
 ```javascript
 import { id32 } from '@jsweb/randkey'
 
-id32() //>> 'f17e3ac8e0ba925a61ed19016c1f2eb0'
+id32() // > 'f17e3ac8e0ba925a61ed19016c1f2eb0'
 ```
 
-### id64(): string
+### id64()
 
 Generates a random ID with 64 hexadecimal digits.
 
 ```javascript
 import { id64 } from '@jsweb/randkey'
 
-id64() //>> 'f17e3ac8e0ba925a61ed19016c1f2eb0f17e3ac8e0ba925a61ed19016c1f2eb0'
+id64() // > 'f17e3ac8e0ba925a61ed19016c1f2eb0f17e3ac8e0ba925a61ed19016c1f2eb0'
 ```
 
-### uuid(): string
+### uuid()
 
 Generates a valid UUID v4 (RFC 4122 compilant).
 
 ```javascript
 import { uuid } from '@jsweb/randkey'
 
-uuid() //>> 'c30663ff-a2d3-4e5d-b377-9e561e8e599b'
+uuid() // > 'c30663ff-a2d3-4e5d-b377-9e561e8e599b'
 ```
 
-### puid(): string
+### puid()
 
 Generates a random 5x5 ID with base2 progressive radix per block.
 
 ```javascript
 import { puid } from '@jsweb/randkey'
 
-puid() //>> 10100-13110-42720-98222-13prn
+puid() // > 10100-13110-42720-98222-13prn
 ```
 
-### ruid(radix: any): string
+### ruid(radix = 10)
 
-Generates a random 5x5 ID using a common radix for all blocks.
+Generates a random 5x5 ID using a common radix for all blocks using `rand(radix, 5)`.
 
-A valid optional `radix` parameter can be a number from 2 to 36. Any other values will be ignored.
+The `radix` parameter can be a number from 2 to 36. Default is 10, which generates base 10 random blocks.
 
 ```javascript
 import { ruid } from '@jsweb/randkey'
 
-ruid(8) //>> 15124-22432-17325-45517-15522
+ruid(8) // > 15124-22432-17325-45517-15522
 ```
 
-### huid(): string
+### huid()
 
 Generates a random 5x5 ID with hexadecimal blocks.
 
-This is only an alias for `ruid(16)`.
+It is just an alias for `ruid(16)`.
 
 ```javascript
 import { huid } from '@jsweb/randkey'
 
-huid() //>> d74b8-124e7-15854-15c73-82909
+huid() // > d74b8-124e7-15854-15c73-82909
 ```
 
-### wuid(): string
+### wuid()
 
-Generates a random 5x5 ID with full alphanumerical blocks format, like Windows Product Key.
+Generates a random 5x5 ID with alphanumerical blocks, like Windows Product Key.
 
-This is only an alias for `ruid(36)`.
+It is just an alias for `ruid(36)`.
 
 ```javascript
 import { wuid } from '@jsweb/randkey'
 
-wuid() //>> 7wuiu-e4fw7-ari12-3z50r-iv04x
+wuid() // > 7wuiu-e4fw7-ari12-3z50r-iv04x
 ```
