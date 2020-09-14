@@ -1,10 +1,10 @@
 /**
  * @name @jsweb/randkey
- * @version 4.1.1
+ * @version 4.1.2
  * @desc Simple JS module to generate random id/key/hash in various formats, including UUID v4
  * @author Alex Bruno Cáceres <git.alexbr@outlook.com>
  * @create date 2016-06-26 03:21:18
- * @modify date 2020-09-14 17:59:35
+ * @modify date 2020-09-14 18:00:27
  */
 const rfc = [8, 9, 'a', 'b'];
 const pick = (arr = []) => arr[Math.floor(Math.random() * arr.length)];
