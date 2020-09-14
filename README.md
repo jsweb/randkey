@@ -8,35 +8,35 @@ See tests at [https://randkey.jsweb.app](https://randkey.jsweb.app)
 ![es6-module](https://img.shields.io/badge/es6-module-blue.svg?style=for-the-badge)
 ![tests-mocha](https://img.shields.io/badge/tests-mocha-blue.svg?style=for-the-badge)
 
-## New in v4.0.0
-
-Now, its a full ES module, there is no UMD or CommonJS version.
-
-In modern JS development ES modules are the pattern, already supported in newer versions of Node.js and modern borwsers natively.
-
-Backward compatibility is not a concern here. If you use a module bundler (like Webpack or Rollup) to transpile your code, the result will be compatible according to your setup.
-
 ---
 
 ## Installation
 
-You can install it with NPM, Yarn or via Unpkg CDN:
+You can install it with NPM, Yarn or get from Unpkg CDN:
 
 `npm i -S @jsweb/randkey`
 
 `yarn add @jsweb/randkey`
 
+Unpkg CDN: https://unpkg.com/@jsweb/randkey
+
 ## Usage
+
+`@jsweb/randkey` is a full ES module, there is no UMD or CommonJS versions.
+
+ES modules are the pattern in modern JS development, already natively supported by newer versions of Node.js and modern browsers.
+
+Backward compatibility is not a concern here. If you use a module bundler (like Webpack or Rollup) to transpile your code, the result will be compatible according to your setup.
 
 ### ES6
 
-Tree shaking (since v3.3.0):
+Tree shaking:
 
 ```javascript
 import { id16, uuid, ... } from '@jsweb/randkey'
 ```
 
-### From CDN (installation not required)
+### From Unpkg CDN (installation not required)
 
 ```html
 <script type="module">
