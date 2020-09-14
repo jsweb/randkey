@@ -49,5 +49,5 @@
   "main": "index.js",
   "esnext": "index.js",
   "module": "index.js",
-  "exports": "index.js"
+  "exports": "./index.js"
 }
