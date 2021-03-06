@@ -7,6 +7,7 @@
     "test:lint": "npm run lint",
     "test:clean": "rm -rf mochawesome-report",
     "test:unit": "mocha src/test.js --reporter mochawesome --reporter-options reportTitle=@jsweb/randkey",
+    "test:index": "cp mochawesome-report/mochawesome.html mochawesome-report/index.html",
     "test:build": "rollup -c",
     "major": "npm version major && npm run push",
     "minor": "npm version minor && npm run push",
