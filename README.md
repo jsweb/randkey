@@ -4,9 +4,9 @@ Simple JS module to generate random id/key/hash in various formats, including UU
 
 See tests at [https://randkey.jsweb.app](https://randkey.jsweb.app)
 
-![npm-package](https://img.shields.io/badge/npm-package-blue.svg?style=for-the-badge)
-![es6-module](https://img.shields.io/badge/es6-module-blue.svg?style=for-the-badge)
-![tests-mocha](https://img.shields.io/badge/tests-mocha-blue.svg?style=for-the-badge)
+![package-npm](https://img.shields.io/badge/package-npm-blue.svg?style=for-the-badge)
+![module-es](https://img.shields.io/badge/module-es-blue.svg?style=for-the-badge)
+![tests-ava](https://img.shields.io/badge/tests-ava-blue.svg?style=for-the-badge)
 
 ---
 
@@ -17,6 +17,8 @@ You can install it with NPM, Yarn or get from Unpkg CDN:
 `npm i -S @jsweb/randkey`
 
 `yarn add @jsweb/randkey`
+
+`pnpm add @jsweb/randkey`
 
 Unpkg CDN: https://unpkg.com/@jsweb/randkey
 
