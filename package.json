@@ -2,20 +2,11 @@
   "name": "@jsweb/randkey",
   "version": "4.1.2",
   "description": "Simple JS module to generate random id/key/hash in various formats, including UUID v4",
-  "scripts": {
-    "test": "run-s test:*",
-    "test:lint": "npm run lint",
-    "test:clean": "rm -rf mochawesome-report",
-    "test:unit": "mocha src/test.js --reporter mochawesome --reporter-options reportTitle=@jsweb/randkey",
-    "test:index": "cp mochawesome-report/mochawesome.html mochawesome-report/index.html",
-    "test:build": "rollup -c",
-    "major": "npm version major && npm run push",
-    "minor": "npm version minor && npm run push",
-    "patch": "npm version patch && npm run push",
-    "push": "git push && git push --tags",
-    "lint": "prettier --write src/*.js",
-    "build:azure": "npm t"
-  },
+  "type": "module",
+  "main": "dist/randkey.js",
+  "esnext": "dist/randkey.js",
+  "module": "dist/randkey.js",
+  "types": "dist/randkey.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jsweb/randkey.git"
@@ -32,24 +23,44 @@
     "uuid",
     "js"
   ],
-  "author": "Alex Bruno Cáceres <git.alexbr@outlook.com>",
+  "author": "Alex Bruno <contato@alexbruno.dev>",
   "license": "MIT",
+  "scripts": {
+    "test": "run-s test:*",
+    "test:tsc": "tsc --noEmit",
+    "test:lint": "prettier --write src/*.ts",
+    "test:clean": "rm -rf coverage",
+    "test:unit": "c8 ava",
+    "test:report": "c8 report -r html -x src/test.ts",
+    "build": "run-s build:*",
+    "build:tsc": "tsc --noEmit",
+    "build:lint": "prettier src/*.ts",
+    "build:test": "ava",
+    "build:dist": "node esbuild.js",
+    "build:types": "tsc -p tsconfig.build.json --emitDeclarationOnly",
+    "upd8": "rm -rf node_modules pnpm-lock.yaml && pnpm i",
+    "preversion": "npm t",
+    "postversion": "git push && git push --tags"
+  },
   "devDependencies": {
-    "husky": "^4.3.0",
-    "mocha": "^8.1.3",
-    "mochawesome": "^6.1.1",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.1",
-    "rollup": "^2.26.11"
+    "@ava/typescript": "latest",
+    "@jsweb/utils": "latest",
+    "@types/node": "latest",
+    "ava": "latest",
+    "c8": "latest",
+    "esbuild": "latest",
+    "npm-run-all": "latest",
+    "prettier": "latest",
+    "ts-node": "latest",
+    "typescript": "latest"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm t && git add ."
-    }
-  },
-  "type": "module",
-  "main": "index.js",
-  "esnext": "index.js",
-  "module": "index.js",
-  "exports": "./index.js"
+  "ava": {
+    "extensions": {
+      "ts": "module"
+    },
+    "nodeArguments": [
+      "--loader=ts-node/esm",
+      "--es-module-specifier-resolution=node"
+    ]
+  }
 }

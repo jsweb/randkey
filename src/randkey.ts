@@ -1,7 +1,5 @@
-const rfc = [8, 9, 'a', 'b']
-const pick = (arr = []) => arr[Math.floor(Math.random() * arr.length)]
-const between = (val, min, max) =>
-  Number.isInteger(val) && val > min && val < max
+import { getRandomItem } from '@jsweb/utils/modules/array'
+import { isBetween } from '@jsweb/utils/modules/number'
 
 /**
  * Generates a random number as string with optional radix and size limit.
@@ -23,11 +21,11 @@ const between = (val, min, max) =>
  * rand(32)    // '18vq5b2hq'
  * rand(36)    // 'fdqlsnvb'
  */
-export function rand(radix = 10, limit = 40) {
+export function rand(radix: number = 10, limit: number = 40): string {
   const rnd = Date.now() * Math.random()
-  const rdx = between(radix, 1, 37) ? radix : 10
-  const cut = between(limit, 0, 41) ? limit : 40
-  const result = Math.round(rnd).toString(rdx).substr(0, cut)
+  const rdx = isBetween(radix, 2, 36) ? radix : 10
+  const cut = isBetween(limit, 1, 40) ? limit : 40
+  const result = Math.round(rnd).toString(rdx).substring(0, cut)
 
   return result
 }
@@ -45,7 +43,7 @@ export function rand(radix = 10, limit = 40) {
  *
  * hex(6)    // 'f9c1d0'
  */
-export function hex(limit = 11) {
+export function hex(limit: number = 11): string {
   return rand(16, limit)
 }
 
@@ -59,7 +57,7 @@ export function hex(limit = 11) {
  *
  * id4()    // 'f9c1'
  */
-export function id4() {
+export function id4(): string {
   return hex(4)
 }
 
@@ -73,7 +71,7 @@ export function id4() {
  *
  * id8()    // 'd74b8ed'
  */
-export function id8() {
+export function id8(): string {
   return hex(8)
 }
 
@@ -87,7 +85,7 @@ export function id8() {
  *
  * id16()    // '6c1f3ac8e0ba611d'
  */
-export function id16() {
+export function id16(): string {
   return `${id8()}${id8()}`
 }
 
@@ -101,7 +99,7 @@ export function id16() {
  *
  * id32()    // 'f17e3ac8e0ba925a61ed19016c1f2eb0'
  */
-export function id32() {
+export function id32(): string {
   return `${id16()}${id16()}`
 }
 
@@ -115,7 +113,7 @@ export function id32() {
  *
  * id64()    // 'f17e3ac8e0ba925a61ed19016c1f2eb0f17e3ac8e0ba925a61ed19016c1f2eb0'
  */
-export function id64() {
+export function id64(): string {
   return `${id32()}${id32()}`
 }
 
@@ -129,12 +127,14 @@ export function id64() {
  *
  * uuid()    // 'c30663ff-a2d3-4e5d-b377-9e561e8e599b'
  */
-export function uuid() {
+export function uuid(): string {
+  const rfc = [8, 9, 'a', 'b']
+
   return [
     id8(),
     id4(),
     `4${hex(3)}`,
-    `${pick(rfc)}${hex(3)}`,
+    `${getRandomItem(rfc)}${hex(3)}`,
     `${hex(6)}${hex(6)}`,
   ].join('-')
 }
@@ -149,7 +149,7 @@ export function uuid() {
  *
  * puid()    // 10100-13110-42720-98222-13prn
  */
-export function puid() {
+export function puid(): string {
   return [2, 4, 6, 8, 16].map((i) => rand(i, 5)).join('-')
 }
 
@@ -165,7 +165,7 @@ export function puid() {
  *
  * ruid(8)    // 15124-22432-17325-45517-15522
  */
-export function ruid(radix = 10) {
+export function ruid(radix: number = 10): string {
   return Array(5)
     .fill(radix)
     .map((i) => rand(i, 5))
@@ -183,7 +183,7 @@ export function ruid(radix = 10) {
  *
  * huid()    // d74b8-124e7-15854-15c73-82909
  */
-export function huid() {
+export function huid(): string {
   return ruid(16)
 }
 
@@ -198,6 +198,6 @@ export function huid() {
  *
  * wuid()    // 7wuiu-e4fw7-ari12-3z50r-iv04x
  */
-export function wuid() {
+export function wuid(): string {
   return ruid(36)
 }

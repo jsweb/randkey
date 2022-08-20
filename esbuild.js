@@ -13,7 +13,7 @@ const banner = `/**
 
 esbuild
   .build({
-    entryPoints: ['src/truetype.ts'],
+    entryPoints: ['src/randkey.ts'],
     outdir: 'dist',
     format: 'esm',
     minify: true,
