@@ -48,8 +48,8 @@ test('rand(n, l) returns string with max 40 chars if l is undefined or l > 40', 
   const k1 = rk.rand(2)
   const k2 = rk.rand(2, 41)
 
-  t.true(k1.length === 40)
-  t.true(k2.length === 40)
+  t.true(k1.length <= 40)
+  t.true(k2.length <= 40)
 })
 
 // idHex(n)

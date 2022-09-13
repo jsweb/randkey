@@ -16,6 +16,7 @@ esbuild
     entryPoints: ['src/randkey.ts'],
     outdir: 'dist',
     format: 'esm',
+    bundle: true,
     minify: true,
     banner: {
       js: banner,
