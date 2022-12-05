@@ -135,7 +135,7 @@ export function uuid(): string {
     id4(),
     `4${hex(3)}`,
     `${getRandomItem(rfc)}${hex(3)}`,
-    `${hex(6)}${hex(6)}`,
+    `${id4()}${id8()}`,
   ].join('-')
 }
 
